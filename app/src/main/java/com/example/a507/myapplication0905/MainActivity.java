@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     protected Button button;
     protected TextView textView;
+    protected int nCount;
 
 
 
@@ -21,9 +23,17 @@ public class MainActivity extends AppCompatActivity {
         button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View view) {
+                nCount++;
+                String sCount = String.format("Count = %d", nCount);
+                textView.setText(sCount);
+                Toast.makeText(getBaseContext(), sCount, Toast.LENGTH_SHORT).show();
             }
         });
+
+        textView = (TextView) findViewById(R.id.textView);
+
+        nCount = 0;
+
     }
 }
